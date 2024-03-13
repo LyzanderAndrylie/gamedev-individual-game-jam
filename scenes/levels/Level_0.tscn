@@ -232,6 +232,7 @@ scale = Vector2(2, 2)
 limit_left = 0
 limit_bottom = 725
 position_smoothing_enabled = true
+editor_draw_limits = true
 
 [node name="Barrier" type="StaticBody2D" parent="."]
 
