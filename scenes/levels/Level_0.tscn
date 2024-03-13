@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://cewyyfqwtae6p"]
+[gd_scene load_steps=9 format=3 uid="uid://cewyyfqwtae6p"]
 
+[ext_resource type="Script" path="res://scenes/levels/Level_0.gd" id="1_7s3a3"]
 [ext_resource type="Texture2D" uid="uid://dri61tyipt1sr" path="res://assets/Forest/PNG/Tileset.png" id="1_a77up"]
 [ext_resource type="Texture2D" uid="uid://bmp4mkuadx1a4" path="res://assets/Background/black.jpg" id="1_ngw7h"]
 [ext_resource type="PackedScene" uid="uid://g63u1awxudqx" path="res://scenes/player/BlackNoir.tscn" id="3_ywqiy"]
@@ -205,6 +206,7 @@ sources/0 = SubResource("TileSetAtlasSource_8evwx")
 size = Vector2(50, 730)
 
 [node name="Level_0" type="Node2D"]
+script = ExtResource("1_7s3a3")
 
 [node name="Background" type="TextureRect" parent="."]
 offset_left = -708.0

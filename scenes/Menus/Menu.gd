@@ -17,7 +17,6 @@ func _ready():
 
 
 func _on_Start_pressed():
-	GameState.CurrentLevel = 0
 	get_tree().change_scene_to_file("res://scenes/levels/Level_0.tscn")
 
 
