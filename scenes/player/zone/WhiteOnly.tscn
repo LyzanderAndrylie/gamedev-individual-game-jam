@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://qroof6jaof2v"]
+
+[ext_resource type="Script" path="res://scenes/player/zone/WhiteOnly.gd" id="1_cs0ot"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_htlps"]
+
+[node name="ColorZone" type="Area2D"]
+script = ExtResource("1_cs0ot")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_htlps")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

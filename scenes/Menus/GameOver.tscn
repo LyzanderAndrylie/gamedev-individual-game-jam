@@ -654,8 +654,21 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 24
 
-[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 124)
+[node name="Seperator" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="DeathCount" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_t5jaf")
+theme_override_font_sizes/font_size = 40
+text = "Death Count: "
+horizontal_alignment = 1
+
+[node name="Seperator2" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
 [node name="Retry" type="Button" parent="MarginContainer/VBoxContainer"]

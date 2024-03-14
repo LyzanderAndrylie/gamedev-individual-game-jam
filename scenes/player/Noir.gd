@@ -25,7 +25,7 @@ var bulletScene = preload("res://scenes/player/Bullet.tscn")
 # Gravity
 var default_gravity = 1
 var gravity_change = false
-const CHANGE_GRAVITY_COOLDOWN_TIME = 2
+const CHANGE_GRAVITY_COOLDOWN_TIME = 1
 var current_gravity_cooldown_time = 0
 
 func _ready():
@@ -37,6 +37,7 @@ func handle_shoot():
 		get_parent().add_child(bullet)
 		bullet.position = $Node2D/Marker2D.global_position
 		bullet.velocity = get_global_mouse_position() - bullet.position
+
 
 func _physics_process(delta):
 	# Handle gravity
