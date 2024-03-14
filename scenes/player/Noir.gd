@@ -13,7 +13,7 @@ var jump_count = 0
 
 # Dash
 const DASH_ACTIVE_TIME = 0.1
-const DASH_COOLDOWN_TIME = 0.5
+const DASH_COOLDOWN_TIME = 2
 var current_dash_active_time = 0
 var current_dash_cooldown_time = 0
 var right_dash_enable = false
@@ -21,6 +21,12 @@ var left_dash_enable = false
 
 # Bullet
 var bulletScene = preload("res://scenes/player/Bullet.tscn")
+
+# Gravity
+var default_gravity = 1
+var gravity_change = false
+const CHANGE_GRAVITY_COOLDOWN_TIME = 2
+var current_gravity_cooldown_time = 0
 
 func _ready():
 	$AnimatedSprite2D.play('default')
@@ -33,19 +39,32 @@ func handle_shoot():
 		bullet.velocity = get_global_mouse_position() - bullet.position
 
 func _physics_process(delta):
+	# Handle gravity
+	current_gravity_cooldown_time = (
+		current_gravity_cooldown_time - delta
+		if current_gravity_cooldown_time > 0
+		else 0
+	)
+	
+	if Input.is_action_just_pressed('ui_gravity') and current_gravity_cooldown_time == 0:
+		default_gravity = -default_gravity
+		gravity_change = not gravity_change
+		$CollisionShape2D.position.y *= -1
+		current_gravity_cooldown_time = CHANGE_GRAVITY_COOLDOWN_TIME
+	
 	# Add the gravity.
-	if not is_on_floor():
-		velocity.y += gravity * delta
+	if not is_on_floor() or gravity_change:
+		velocity.y += gravity * delta * default_gravity
 	
 	# Handle jump and double jump 
-	if is_on_floor():
+	if is_on_floor() or is_on_ceiling():
 		jump_count = 0
 	
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	if Input.is_action_just_pressed("ui_accept") and (is_on_floor() or is_on_ceiling()):
+		velocity.y = JUMP_VELOCITY * default_gravity
 		jump_count = 1
 	elif Input.is_action_just_pressed("ui_accept") and jump_count < 2:
-		velocity.y = JUMP_VELOCITY
+		velocity.y = JUMP_VELOCITY * default_gravity
 		jump_count = 2
 
 	# Get the input direction and handle the movement/deceleration.
@@ -98,21 +117,20 @@ func _physics_process(delta):
 	
 
 func set_animation():
-		# Change direction
+	# Change direction
 	if Input.is_action_pressed('ui_left'):
-		$AnimatedSprite2D.set_flip_h(true)
+		$AnimatedSprite2D.set_flip_h(not gravity_change)
 	elif Input.is_action_pressed('ui_right'):
-		$AnimatedSprite2D.set_flip_h(false)
+		$AnimatedSprite2D.set_flip_h(gravity_change)
 		
 	# set animation jump
 	if Input.is_action_just_pressed('ui_accept'):
-		$AnimatedSprite2D.play('jump')
+		$AnimatedSprite2D.play('jump' if not gravity_change else 'jump_invert')
 		
 	# Set idle animation
-	if is_on_floor():
-		if Input.is_action_pressed('ui_right') or Input.is_action_pressed('ui_left'):
-			$AnimatedSprite2D.play('walk')
-		else:
-			$AnimatedSprite2D.play('default')
+	if Input.is_action_pressed('ui_right') or Input.is_action_pressed('ui_left'):
+		$AnimatedSprite2D.play('walk' if not gravity_change else 'walk_invert')
+	else:
+		$AnimatedSprite2D.play('default' if not gravity_change else 'default_invert')
 	
 	
