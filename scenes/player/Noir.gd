@@ -19,9 +19,18 @@ var current_dash_cooldown_time = 0
 var right_dash_enable = false
 var left_dash_enable = false
 
+# Bullet
+var bulletScene = preload("res://scenes/player/Bullet.tscn")
+
 func _ready():
 	$AnimatedSprite2D.play('default')
 
+func handle_shoot():
+	if Input.is_action_just_pressed('ui_click'):
+		var bullet = bulletScene.instantiate()
+		get_parent().add_child(bullet)
+		bullet.position = $Node2D/Marker2D.global_position
+		bullet.velocity = get_global_mouse_position() - bullet.position
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -78,6 +87,10 @@ func _physics_process(delta):
 		velocity.x -= SPEED * DASH_MULTIPLIER
 		left_dash_enable = false
 		current_dash_cooldown_time = DASH_COOLDOWN_TIME
+		
+	# Handle Shoot
+	handle_shoot()
+	$Node2D.look_at(get_global_mouse_position())
 	
 	# Set animation
 	set_animation()

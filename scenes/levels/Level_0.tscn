@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/levels/Level_0.gd" id="1_7s3a3"]
 [ext_resource type="Texture2D" uid="uid://dri61tyipt1sr" path="res://assets/Forest/PNG/Tileset.png" id="1_a77up"]
 [ext_resource type="Texture2D" uid="uid://bmp4mkuadx1a4" path="res://assets/Background/black.jpg" id="1_ngw7h"]
-[ext_resource type="PackedScene" uid="uid://g63u1awxudqx" path="res://scenes/player/BlackNoir.tscn" id="3_ywqiy"]
+[ext_resource type="PackedScene" uid="uid://g63u1awxudqx" path="res://scenes/player/Noir.tscn" id="3_ywqiy"]
 [ext_resource type="PackedScene" uid="uid://tfob8mkub4lq" path="res://scenes/levels/zone/Deadzone.tscn" id="4_tqr4e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8evwx"]
@@ -199,7 +199,7 @@ texture = ExtResource("1_a77up")
 
 [sub_resource type="TileSet" id="TileSet_l8mmk"]
 physics_layer_0/collision_layer = 1
-physics_layer_0/collision_mask = 2
+physics_layer_0/collision_mask = 6
 sources/0 = SubResource("TileSetAtlasSource_8evwx")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dkaml"]
@@ -221,11 +221,11 @@ tile_set = SubResource("TileSet_l8mmk")
 format = 2
 layer_0/tile_data = PackedInt32Array(1900544, 0, 0, 1966080, 0, 1, 2031616, 0, 1, 2097152, 0, 1, 2162688, 0, 1, 2228224, 0, 1, 2293760, 0, 1, 1900545, 65536, 0, 1900546, 65536, 0, 1900547, 65536, 0, 1900548, 65536, 0, 1900549, 65536, 0, 1900550, 65536, 0, 1900551, 65536, 0, 1900552, 65536, 0, 1900553, 65536, 0, 1900554, 65536, 0, 1900555, 65536, 0, 1900556, 65536, 0, 1900557, 65536, 0, 1900558, 65536, 0, 1900559, 131072, 0, 1966096, 65536, 0, 1966097, 65536, 0, 1966098, 65536, 0, 1966099, 65536, 0, 1966100, 131072, 0, 2031637, 65536, 0, 2031638, 65536, 0, 2031639, 65536, 0, 2031640, 131072, 0, 2097176, 131072, 1, 2162712, 131072, 1, 2228248, 131072, 1, 2293784, 131072, 1, 2293783, 65536, 1, 2293762, 65536, 1, 2293761, 65536, 1, 2293763, 65536, 1, 2293764, 65536, 1, 2293765, 65536, 1, 2293766, 65536, 1, 2293767, 65536, 1, 2293768, 65536, 1, 2293769, 65536, 1, 2293770, 65536, 1, 2293771, 65536, 1, 2293772, 65536, 1, 2293773, 65536, 1, 2293774, 65536, 1, 2293775, 65536, 1, 2293776, 65536, 1, 2293777, 65536, 1, 2293778, 65536, 1, 2293779, 65536, 1, 2293780, 65536, 1, 2293781, 65536, 1, 2293782, 65536, 1, 2359296, 0, 1, 2424832, 0, 1, 2490368, 0, 1, 2555904, 0, 1, 2621440, 0, 1, 2686976, 0, 1, 2752512, 0, 1, 2818048, 0, 1, 2883584, 0, 1, 2949120, 0, 1, 2359320, 131072, 1, 2424856, 131072, 1, 2490392, 131072, 1, 2555928, 131072, 1, 2621464, 131072, 1, 2687000, 131072, 1, 2752536, 131072, 1, 2818072, 131072, 1, 2883608, 131072, 1, 2949144, 131072, 1)
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("3_ywqiy")]
+[node name="Noir" parent="." instance=ExtResource("3_ywqiy")]
 position = Vector2(45, 440)
-collision_mask = 3
+collision_layer = 2
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="CharacterBody2D"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Noir"]
 remote_path = NodePath("../../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -237,6 +237,7 @@ position_smoothing_enabled = true
 editor_draw_limits = true
 
 [node name="Barrier" type="StaticBody2D" parent="."]
+collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Barrier"]
 position = Vector2(-25, 365)
@@ -245,3 +246,4 @@ shape = SubResource("RectangleShape2D_dkaml")
 [node name="Deadzone" parent="." instance=ExtResource("4_tqr4e")]
 position = Vector2(1947, 752)
 scale = Vector2(200, 2)
+collision_mask = 6

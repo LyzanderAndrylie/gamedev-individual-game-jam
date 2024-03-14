@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://g63u1awxudqx"]
 
-[ext_resource type="Script" path="res://scenes/player/BlackNoir.gd" id="1_1vwh7"]
+[ext_resource type="Script" path="res://scenes/player/Noir.gd" id="1_1vwh7"]
 [ext_resource type="Texture2D" uid="uid://cblqrgn6y23fg" path="res://assets/Pixel Protagonist/AnimationSheet_invert.png" id="1_qt84a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_afkck"]
@@ -101,7 +101,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ocnuq"]
 size = Vector2(11, 17.5)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Noir" type="CharacterBody2D"]
 scale = Vector2(2, 2)
 script = ExtResource("1_1vwh7")
 
@@ -111,3 +111,8 @@ sprite_frames = SubResource("SpriteFrames_ydngf")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3.25)
 shape = SubResource("RectangleShape2D_ocnuq")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Node2D"]
+position = Vector2(11, 2)
