@@ -25,40 +25,47 @@ var bulletScene = preload("res://scenes/player/Bullet.tscn")
 # Gravity
 var default_gravity = 1
 var gravity_change = false
-const CHANGE_GRAVITY_COOLDOWN_TIME = 1
-var current_gravity_cooldown_time = 0
+var change_gravity_active = true
+
+# Shoot
+var can_shot = true
+
+# Life
+var health = 100
 
 func _ready():
 	$AnimatedSprite2D.play('default')
-
+	
 func handle_shoot():
-	if Input.is_action_just_pressed('ui_click'):
+	if Input.is_action_just_pressed('ui_click') and can_shot:
 		var bullet = bulletScene.instantiate()
+		bullet.setup('white' if gravity_change else 'black')
 		get_parent().add_child(bullet)
+		
 		bullet.position = $Node2D/Marker2D.global_position
 		bullet.velocity = get_global_mouse_position() - bullet.position
+		can_shot = false
+		$ShootTimer.start()
 
 
 func _physics_process(delta):
 	# Handle gravity
-	current_gravity_cooldown_time = (
-		current_gravity_cooldown_time - delta
-		if current_gravity_cooldown_time > 0
-		else 0
-	)
-	
-	if Input.is_action_just_pressed('ui_gravity') and current_gravity_cooldown_time == 0:
+	if Input.is_action_just_pressed('ui_gravity') and change_gravity_active:
 		default_gravity = -default_gravity
 		gravity_change = not gravity_change
 		$CollisionShape2D.position.y *= -1
-		current_gravity_cooldown_time = CHANGE_GRAVITY_COOLDOWN_TIME
+		$Hitbox.position.y *= -1
+		
+		# Set cooldown for change gravity skill
+		change_gravity_active = false
+		$ChangeGravityTimer.start()
 	
 	# Add the gravity.
 	if not is_on_floor() or gravity_change:
 		velocity.y += gravity * delta * default_gravity
 	
 	# Handle jump and double jump 
-	if is_on_floor() or is_on_ceiling():
+	if (is_on_floor() and not gravity_change) or (is_on_ceiling() and gravity_change):
 		jump_count = 0
 	
 	if Input.is_action_just_pressed("ui_accept") and (is_on_floor() or is_on_ceiling()):
@@ -110,7 +117,6 @@ func _physics_process(delta):
 		
 	# Handle Shoot
 	handle_shoot()
-	$Node2D.look_at(get_global_mouse_position())
 	
 	# Set animation
 	set_animation()
@@ -133,5 +139,22 @@ func set_animation():
 		$AnimatedSprite2D.play('walk' if not gravity_change else 'walk_invert')
 	else:
 		$AnimatedSprite2D.play('default' if not gravity_change else 'default_invert')
-	
-	
+
+
+func _on_change_gravity_timer_timeout():
+	change_gravity_active = true
+
+
+func _on_area_2d_body_entered(body):
+	if body is CharacterBody2D:
+		if body.bulletColor == 'purple':
+			health -= 20
+			
+			# enemy dead
+			if health <= 0:
+				GameState.deathCount += 1
+				get_tree().change_scene_to_file("res://scenes/menus/GameOver.tscn")
+
+
+func _on_shoot_timer_timeout():
+	can_shot = true

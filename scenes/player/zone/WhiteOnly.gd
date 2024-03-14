@@ -12,6 +12,6 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-		if not body.gravity_change:
+		if body.name == 'Noir' and not body.gravity_change:
 			GameState.deathCount += 1
 			get_tree().change_scene_to_file("res://scenes/menus/GameOver.tscn")

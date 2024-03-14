@@ -5,6 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_htlps"]
 
 [node name="ColorZone" type="Area2D"]
+collision_mask = 6
 script = ExtResource("1_lqrmg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

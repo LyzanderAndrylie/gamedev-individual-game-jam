@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://g63u1awxudqx"]
+[gd_scene load_steps=29 format=3 uid="uid://g63u1awxudqx"]
 
 [ext_resource type="Script" path="res://scenes/player/Noir.gd" id="1_1vwh7"]
 [ext_resource type="Texture2D" uid="uid://cblqrgn6y23fg" path="res://assets/Pixel Protagonist/AnimationSheet_invert.png" id="1_qt84a"]
@@ -192,21 +192,43 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ocnuq"]
-size = Vector2(11, 17.5)
+size = Vector2(9.5, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nwkeq"]
+size = Vector2(9.5, 17)
 
 [node name="Noir" type="CharacterBody2D"]
 scale = Vector2(2, 2)
+collision_layer = 2
 script = ExtResource("1_1vwh7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ydngf")
-animation = &"default_invert"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3.25)
+position = Vector2(0.25, 3.5)
 shape = SubResource("RectangleShape2D_ocnuq")
 
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="Node2D"]
 position = Vector2(11, 2)
+
+[node name="ChangeGravityTimer" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0.25, 3.5)
+shape = SubResource("RectangleShape2D_nwkeq")
+
+[node name="ShootTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="ChangeGravityTimer" to="." method="_on_change_gravity_timer_timeout"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
