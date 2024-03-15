@@ -18,7 +18,7 @@ func _physics_process(delta):
 	if collision:
 		var colliderObj = collision.get_collider()
 		
-		if colliderObj.name == 'Barrier':
+		if colliderObj.name == 'Barrier' or colliderObj.name == 'NextLevelBarrier':
 			queue_free()
 		elif colliderObj.name == 'TileMap':
 			queue_free()

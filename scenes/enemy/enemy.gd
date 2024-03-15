@@ -10,8 +10,12 @@ var health = 100
 var initialSpeed = 300
 var nextSpeed = 800
 
+var hitInfoScene = preload("res://scenes/misc/FloatingNumber.tscn")
+var hitDamage = 10
+
 func _ready():
 	$HealthBar.value = health
+	randomize()
 
 func shoot():
 	var bullet = bulletScene.instantiate()
@@ -45,12 +49,30 @@ func _on_area_2d_body_entered(body):
 		
 		# black can obly take damage from white bullte and vice versa
 		if body.bulletColor == 'black' and color != 'black':
-			health -= 10
+			health -= hitDamage
+			popup(hitDamage)
 		elif body.bulletColor == 'white' and color != 'white':
-			health -= 10
+			health -= hitDamage
+			popup(hitDamage)
 		
 		$HealthBar.value = health
 		
 		# enemy dead
 		if health <= 0:
 			queue_free()
+
+func popup(hitDamage: int):
+	var damage = hitInfoScene.instantiate()
+	damage.setup(hitDamage)
+	damage.position = global_position
+ 
+	var tween = get_tree().create_tween()
+	tween.tween_property(damage,
+						 "position",
+						 global_position + _get_direction(),
+						 0.75)
+ 
+	get_tree().current_scene.add_child(damage)
+ 
+func _get_direction():
+	return Vector2(randf_range(-1,1), -randf()) * 16

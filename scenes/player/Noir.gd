@@ -33,6 +33,10 @@ var can_shot = true
 # Life
 var health = 100
 
+# Damage
+var hitInfoScene = preload("res://scenes/misc/FloatingNumber.tscn")
+var hitDamage = 20
+
 func _ready():
 	$AnimatedSprite2D.play('default')
 	
@@ -148,9 +152,11 @@ func _on_change_gravity_timer_timeout():
 func _on_area_2d_body_entered(body):
 	if body is CharacterBody2D:
 		if body.bulletColor == 'purple':
-			health -= 20
+			health -= hitDamage
 			
-			# enemy dead
+			popup(hitDamage)
+			
+			# player dead
 			if health <= 0:
 				GameState.deathCount += 1
 				get_tree().change_scene_to_file("res://scenes/menus/GameOver.tscn")
@@ -158,3 +164,19 @@ func _on_area_2d_body_entered(body):
 
 func _on_shoot_timer_timeout():
 	can_shot = true
+
+func popup(hitDamage: int):
+	var damage = hitInfoScene.instantiate()
+	damage.setup(hitDamage)
+	damage.position = global_position
+ 
+	var tween = get_tree().create_tween()
+	tween.tween_property(damage,
+						 "position",
+						 global_position + _get_direction(),
+						 0.75)
+ 
+	get_tree().current_scene.add_child(damage)
+ 
+func _get_direction():
+	return Vector2(randf_range(-1,1), -randf()) * 16

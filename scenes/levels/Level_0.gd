@@ -17,3 +17,14 @@ func _on_challenge_body_entered(body):
 		$CanvasLayer/PopupPanel.visible = true
 		await get_tree().create_timer(4).timeout
 		$CanvasLayer/PopupPanel.visible = false
+
+
+func _on_enemy_tree_exited():
+	$NextLevelBarrier.queue_free()
+	$CanvasLayer/PopupPanel.queue_free()
+
+
+func _on_done_body_entered(body):
+	if body.name == 'Noir':
+		GameState.CurrentLevel = 1
+		get_tree().change_scene_to_file("res://scenes/levels/Level_%d.tscn" % GameState.CurrentLevel)
