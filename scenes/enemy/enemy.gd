@@ -5,10 +5,10 @@ extends CharacterBody2D
 
 var bulletScene = preload("res://scenes/player/Bullet.tscn")
 var player = null
-var health = 100
+@export var health = 100
 
-var initialSpeed = 300
-var nextSpeed = 800
+@export var initialSpeed = 300
+@export var nextSpeed = 800
 
 var hitInfoScene = preload("res://scenes/misc/FloatingNumber.tscn")
 var hitDamage = 10
@@ -23,7 +23,7 @@ func shoot():
 	get_parent().add_child(bullet, 500)
 	bullet.position = $Marker2D.global_position
 	bullet.velocity = player.global_position - global_position
-	bullet.velocity += Vector2(20, 20)
+	bullet.velocity += Vector2(40, 40)
 	
 
 func _on_detection_area_body_entered(body):

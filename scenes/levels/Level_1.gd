@@ -1,9 +1,10 @@
 extends Node2D
 
-var boss_killed = false
+const TOTAL_BOSS = 2
+var total_boss_killed = 0
 
 func _ready():
-	GameState.CurrentLevel = 0
+	GameState.CurrentLevel = 1
 
 func _process(delta):
 	$CanvasLayer/MarginContainer/MarginContainer/VBoxContainer/HealthBar.value = $Noir.health
@@ -14,19 +15,20 @@ func _process(delta):
 
 
 func _on_challenge_body_entered(body):
-	if body.name == 'Noir' and not boss_killed:
+	if body.name == 'Noir':
 		$CanvasLayer/PopupPanel.visible = true
 		await get_tree().create_timer(4).timeout
 		$CanvasLayer/PopupPanel.visible = false
 
 
 func _on_enemy_tree_exited():
-	$NextLevelBarrier.queue_free()
-	$CanvasLayer/PopupPanel.queue_free()
-	boss_killed = true
+	if total_boss_killed == TOTAL_BOSS:
+		$NextLevelBarrier.queue_free()
+		$CanvasLayer/PopupPanel.queue_free()
+	else:
+		total_boss_killed += 1
 
 
 func _on_done_body_entered(body):
 	if body.name == 'Noir':
-		GameState.CurrentLevel = 1
-		get_tree().change_scene_to_file("res://scenes/levels/Level_%d.tscn" % GameState.CurrentLevel)
+		get_tree().change_scene_to_file("res://scenes/menus/Win.tscn")

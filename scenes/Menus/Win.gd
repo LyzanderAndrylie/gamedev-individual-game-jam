@@ -14,7 +14,5 @@ func _process(delta):
 func _on_quit_pressed():
 	get_tree().quit()
 
-
-func _on_retry_pressed():
-	print(GameState.CurrentLevel)
-	get_tree().change_scene_to_file("res://scenes/levels/Level_%d.tscn" % GameState.CurrentLevel)
+func _on_home_pressed():
+	get_tree().change_scene_to_file("res://scenes/menus/Menu.tscn")
