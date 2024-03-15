@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cewyyfqwtae6p"]
+[gd_scene load_steps=28 format=3 uid="uid://cewyyfqwtae6p"]
 
 [ext_resource type="Script" path="res://scenes/levels/Level_0.gd" id="1_7s3a3"]
 [ext_resource type="Texture2D" uid="uid://dri61tyipt1sr" path="res://assets/Forest/PNG/Tileset.png" id="1_a77up"]
@@ -10,13 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://dx1ac01jyxjgt" path="res://assets/1 Bit Platformer Pack/Tilemap/monochrome_tilemap_packed_invert.png" id="6_nfd0j"]
 [ext_resource type="Texture2D" uid="uid://ddjl46blrcsaa" path="res://assets/1 Bit Platformer Pack/Tilemap/monochrome_tilemap_transparent.png" id="7_mekjm"]
 [ext_resource type="FontFile" uid="uid://dau75jq4rtgwe" path="res://assets/Font/m6x11.ttf" id="7_s8i0f"]
-[ext_resource type="Texture2D" uid="uid://ckqqlxibupfgm" path="res://assets/Icons/a.png" id="8_7j7r3"]
 [ext_resource type="Texture2D" uid="uid://dr6gltowegeip" path="res://assets/1 Bit Platformer Pack/Tilemap/monochrome_tilemap_transparent_invert.png" id="8_tmcdb"]
-[ext_resource type="Texture2D" uid="uid://ch5eo2hmfolbc" path="res://assets/Icons/d.png" id="9_ll2oo"]
-[ext_resource type="Texture2D" uid="uid://cfkqgwvh2d7mv" path="res://assets/Icons/w.png" id="10_llc70"]
-[ext_resource type="Texture2D" uid="uid://claudwetjrdog" path="res://assets/Icons/space.png" id="11_xv67r"]
-[ext_resource type="Texture2D" uid="uid://b7r62a33cp3ff" path="res://assets/Icons/q.png" id="12_ufxe4"]
 [ext_resource type="Texture2D" uid="uid://br15dd032q2ml" path="res://assets/Black and White Tiles/tree.png" id="17_3ropl"]
+[ext_resource type="Texture2D" path="res://assets/instruction.png" id="17_8v1vk"]
 [ext_resource type="PackedScene" uid="uid://qveen0f182ud" path="res://scenes/player/zone/BlackOnly.tscn" id="18_31bv2"]
 [ext_resource type="PackedScene" uid="uid://qroof6jaof2v" path="res://scenes/player/zone/WhiteOnly.tscn" id="19_2cj67"]
 [ext_resource type="PackedScene" uid="uid://bsp515y3w6s0l" path="res://scenes/enemy/enemy.tscn" id="20_m8ma3"]
@@ -7148,23 +7144,6 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
-layout_mode = 0
-offset_left = 17.0
-offset_top = 590.0
-offset_right = 231.0
-offset_bottom = 684.0
-theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("7_s8i0f")
-theme_override_font_sizes/normal_font_size = 18
-text = "Press    to go left
-Press    to go right
-Double tap    /    to dash
-Press    /    to jump
-Press    ?"
-
 [node name="RichTextLabel2" type="RichTextLabel" parent="Control"]
 layout_mode = 0
 offset_left = 121.0
@@ -7255,34 +7234,6 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-
-[node name="A" type="Sprite2D" parent="Control2"]
-position = Vector2(68, 597)
-texture = ExtResource("8_7j7r3")
-
-[node name="A2" type="Sprite2D" parent="Control2"]
-position = Vector2(100, 632)
-texture = ExtResource("8_7j7r3")
-
-[node name="D" type="Sprite2D" parent="Control2"]
-position = Vector2(68, 615)
-texture = ExtResource("9_ll2oo")
-
-[node name="D2" type="Sprite2D" parent="Control2"]
-position = Vector2(130, 632)
-texture = ExtResource("9_ll2oo")
-
-[node name="W" type="Sprite2D" parent="Control2"]
-position = Vector2(68, 649)
-texture = ExtResource("10_llc70")
-
-[node name="Space" type="Sprite2D" parent="Control2"]
-position = Vector2(96, 649)
-texture = ExtResource("11_xv67r")
-
-[node name="Q" type="Sprite2D" parent="Control2"]
-position = Vector2(68, 667)
-texture = ExtResource("12_ufxe4")
 
 [node name="Tree" type="Sprite2D" parent="Control2"]
 position = Vector2(842, 369)
@@ -7408,6 +7359,13 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Done"]
 position = Vector2(2344, 600)
 shape = SubResource("CircleShape2D_xk3lv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(93, 626)
+scale = Vector2(0.190448, 0.190448)
+texture = ExtResource("17_8v1vk")
 
 [connection signal="tree_exited" from="Enemy" to="." method="_on_enemy_tree_exited"]
 [connection signal="body_entered" from="Challenge" to="." method="_on_challenge_body_entered"]
