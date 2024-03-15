@@ -7095,7 +7095,7 @@ script = ExtResource("1_7s3a3")
 offset_left = -937.0
 offset_top = 3.0
 offset_right = 3536.0
-offset_bottom = 736.0
+offset_bottom = 1212.0
 texture = ExtResource("1_ngw7h")
 expand_mode = 1
 
@@ -7361,7 +7361,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("7_s8i0f")
 theme_override_font_sizes/font_size = 16
-text = "Skill Status"
+text = "Gravity Manipulation Status"
 
 [node name="Shoot Status" type="CheckButton" parent="CanvasLayer/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

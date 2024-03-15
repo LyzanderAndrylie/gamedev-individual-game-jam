@@ -7220,7 +7220,7 @@ script = ExtResource("1_u4101")
 [node name="Background" type="TextureRect" parent="."]
 offset_left = -1208.0
 offset_right = 3265.0
-offset_bottom = 733.0
+offset_bottom = 1272.0
 texture = ExtResource("2_fie13")
 expand_mode = 1
 
@@ -7235,7 +7235,7 @@ scale = Vector2(2, 2)
 zoom = Vector2(1.5, 1.5)
 limit_left = 0
 limit_top = 150
-limit_bottom = 725
+limit_bottom = 200
 position_smoothing_enabled = true
 editor_draw_limits = true
 
@@ -7488,7 +7488,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("10_3y4iv")
 theme_override_font_sizes/font_size = 16
-text = "Skill Status"
+text = "Gravity Manipulation Status"
 
 [node name="Shoot Status" type="CheckButton" parent="CanvasLayer/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
