@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cvyckc5sp0aa6" path="res://assets/Sorcerer/sorcerer villain purple white.png" id="3_6vxgn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_koa03"]
-radius = 746.001
+radius = 835.06
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aouuq"]
 atlas = ExtResource("2_ds858")

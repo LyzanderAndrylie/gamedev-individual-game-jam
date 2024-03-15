@@ -40,19 +40,14 @@ func _on_timer_timeout():
 
 
 func _on_area_2d_body_entered(body):
-	print(body.name)
 	if body is CharacterBody2D:
 		if body.bulletColor == 'purple': return
-		
-		print(body.bulletColor)
 		
 		# black can obly take damage from white bullte and vice versa
 		if body.bulletColor == 'black' and color != 'black':
 			health -= 10
 		elif body.bulletColor == 'white' and color != 'white':
 			health -= 10
-		
-		print(health)
 		
 		$HealthBar.value = health
 		

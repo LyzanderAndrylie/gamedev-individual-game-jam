@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cewyyfqwtae6p"]
+[gd_scene load_steps=30 format=3 uid="uid://cewyyfqwtae6p"]
 
 [ext_resource type="Script" path="res://scenes/levels/Level_0.gd" id="1_7s3a3"]
 [ext_resource type="Texture2D" uid="uid://dri61tyipt1sr" path="res://assets/Forest/PNG/Tileset.png" id="1_a77up"]
@@ -7082,6 +7082,9 @@ sources/5 = SubResource("TileSetAtlasSource_j22py")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dkaml"]
 size = Vector2(50, 730)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_425fe"]
+size = Vector2(779.25, 560)
+
 [node name="Level_0" type="Node2D"]
 script = ExtResource("1_7s3a3")
 
@@ -7347,3 +7350,27 @@ theme_override_constants/outline_size = 12
 theme_override_fonts/normal_font = ExtResource("7_s8i0f")
 text = "Death Count:"
 scroll_active = false
+
+[node name="PopupPanel" type="PopupPanel" parent="CanvasLayer"]
+position = Vector2i(762, 12)
+size = Vector2i(250, 100)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/PopupPanel"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 246.0
+offset_bottom = 96.0
+theme_override_fonts/normal_font = ExtResource("7_s8i0f")
+theme_override_font_sizes/normal_font_size = 25
+text = "New Challenge:
+Kill the boss!"
+
+[node name="Challenge" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Challenge"]
+position = Vector2(1766.38, 439)
+shape = SubResource("RectangleShape2D_425fe")
+
+[connection signal="body_entered" from="Challenge" to="." method="_on_challenge_body_entered"]
