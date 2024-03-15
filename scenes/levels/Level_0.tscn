@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cewyyfqwtae6p"]
+[gd_scene load_steps=32 format=3 uid="uid://cewyyfqwtae6p"]
 
 [ext_resource type="Script" path="res://scenes/levels/Level_0.gd" id="1_7s3a3"]
 [ext_resource type="Texture2D" uid="uid://dri61tyipt1sr" path="res://assets/Forest/PNG/Tileset.png" id="1_a77up"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://qveen0f182ud" path="res://scenes/player/zone/BlackOnly.tscn" id="18_31bv2"]
 [ext_resource type="PackedScene" uid="uid://qroof6jaof2v" path="res://scenes/player/zone/WhiteOnly.tscn" id="19_2cj67"]
 [ext_resource type="PackedScene" uid="uid://bsp515y3w6s0l" path="res://scenes/enemy/enemy.tscn" id="20_m8ma3"]
+[ext_resource type="AudioStream" uid="uid://dof2oom8ixscy" path="res://assets/Audio/mixkit-game-level-music-689.wav" id="21_ftogu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8evwx"]
 resource_name = "black"
@@ -7112,6 +7113,12 @@ limit_top = 150
 limit_bottom = 725
 position_smoothing_enabled = true
 editor_draw_limits = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Camera2D"]
+position = Vector2(-80, -275.5)
+scale = Vector2(0.5, 0.5)
+stream = ExtResource("21_ftogu")
+autoplay = true
 
 [node name="Barrier" type="StaticBody2D" parent="."]
 collision_mask = 6

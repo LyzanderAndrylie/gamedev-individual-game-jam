@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://c8ysaenfx8wwe"]
+[gd_scene load_steps=46 format=3 uid="uid://c8ysaenfx8wwe"]
 
 [ext_resource type="Script" path="res://scenes/levels/Level_1.gd" id="1_u4101"]
 [ext_resource type="Texture2D" uid="uid://bmp4mkuadx1a4" path="res://assets/Background/black.jpg" id="2_fie13"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="15_jeo7e"]
 [ext_resource type="Texture2D" uid="uid://ddfn5g0y13ux4" path="res://assets/Sorcerer/sorcerer villain purple.png" id="16_v2bkb"]
 [ext_resource type="Texture2D" uid="uid://cvyckc5sp0aa6" path="res://assets/Sorcerer/sorcerer villain purple white.png" id="17_3r3rm"]
+[ext_resource type="AudioStream" uid="uid://dof2oom8ixscy" path="res://assets/Audio/mixkit-game-level-music-689.wav" id="17_6n0ny"]
 [ext_resource type="PackedScene" uid="uid://qveen0f182ud" path="res://scenes/player/zone/BlackOnly.tscn" id="17_qofqe"]
 [ext_resource type="PackedScene" uid="uid://qroof6jaof2v" path="res://scenes/player/zone/WhiteOnly.tscn" id="18_ix01s"]
 [ext_resource type="PackedScene" uid="uid://g63u1awxudqx" path="res://scenes/player/Noir.tscn" id="20_7o3iy"]
@@ -7237,6 +7238,13 @@ limit_top = 150
 limit_bottom = 725
 position_smoothing_enabled = true
 editor_draw_limits = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Camera2D"]
+position = Vector2(-56, -196)
+scale = Vector2(0.5, 0.5)
+stream = ExtResource("17_6n0ny")
+autoplay = true
+max_distance = 20000.0
 
 [node name="Barrier" type="StaticBody2D" parent="."]
 collision_mask = 6
