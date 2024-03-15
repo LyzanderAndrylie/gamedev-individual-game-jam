@@ -12,7 +12,7 @@
 [ext_resource type="FontFile" uid="uid://dau75jq4rtgwe" path="res://assets/Font/m6x11.ttf" id="7_s8i0f"]
 [ext_resource type="Texture2D" uid="uid://dr6gltowegeip" path="res://assets/1 Bit Platformer Pack/Tilemap/monochrome_tilemap_transparent_invert.png" id="8_tmcdb"]
 [ext_resource type="Texture2D" uid="uid://br15dd032q2ml" path="res://assets/Black and White Tiles/tree.png" id="17_3ropl"]
-[ext_resource type="Texture2D" path="res://assets/instruction.png" id="17_8v1vk"]
+[ext_resource type="Texture2D" uid="uid://da6tgxj7a6b4y" path="res://assets/instruction.png" id="17_8v1vk"]
 [ext_resource type="PackedScene" uid="uid://qveen0f182ud" path="res://scenes/player/zone/BlackOnly.tscn" id="18_31bv2"]
 [ext_resource type="PackedScene" uid="uid://qroof6jaof2v" path="res://scenes/player/zone/WhiteOnly.tscn" id="19_2cj67"]
 [ext_resource type="PackedScene" uid="uid://bsp515y3w6s0l" path="res://scenes/enemy/enemy.tscn" id="20_m8ma3"]
