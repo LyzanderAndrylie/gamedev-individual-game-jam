@@ -42,7 +42,7 @@ Cara bermain game ini sangat mudah. Yuk, kita simak!
     - Tekan tombol `A` atau `D` dua kali untuk *dash*
     - Tekan tombol `W` atau `Space` untuk melompat. Tekan tombol tersebut dua kali untuk double jump.
     - Tekan tombol `Q` untuk mengubah bentuk Noir dan memanipulasi gravitasi.
-    - Tekan `Left Click` pada mouse anda arahkan pointer mouse untuk menembak.
+    - Tekan `Left Click` pada mouse dan arahkan pointer mouse untuk menembak.
 
 4. Pemain akan bergerak ke kanan peta untuk menyelesaikan level dengan menghadapai berbagai tantangan.
 
