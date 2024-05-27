@@ -94,3 +94,32 @@ Cara bermain game ini sangat mudah. Yuk, kita simak!
 13. [1 Bit Keyboard Icons](https://ansdor.itch.io/button-icons)
 14. [Sorcerer Villain](https://lionheart963.itch.io/sorcerer-villain)
 15. [Game Audio](https://mixkit.co/free-sound-effects/game/)
+16. [Jump Audio](https://pixabay.com/sound-effects/search/jump/)
+
+### Cheat
+
+Pemain dapat mengaktifkan cheat dengan menekan kombinasi tombol `Ctrl + Shift + *`.
+
+Ketika pemain mengaktifkan cheat, pemain dapat terbang dengan leluasa pada level permainan. Selain itu, pemain akan mendapatkan *health* yang tidak terbatas.
+
+### Polishing
+
+1. Menambahkan particle trail ketika Noir sedang berjalan
+
+    Hal ini meningkatkan aestetik permainan karena sesuai dengan tema dari game *Noir* sendiri yang bertemakan hitam putih (1 bit). Selain itu, ketika pemain bergerak dan mengubah gravitasi, pemain dapat melihat pola indah dari pergerakan yang dilakukan oleh Noir. Berikut adalah contoh screenshot dari penambahan particle trail tersebut.
+
+2. Menambahkan audio ketika Noir sedang melompat
+
+    Penambahan audio yang tepat dapat meningkatkan mood permainan dan pengalaman bermain dari pemain. Oleh karena itu, saya menambahkan audio ketika Noir sedang melompat.
+
+3. Memperbaiki kode sumber
+
+    Polishing ini dilakukan dengan memperbaiki kode sumber sedemikian hingga mencegah terjadinya bug yang dapat mempengaruhi pengalaman bermain pengguna. Selain itu, kode sumber yang baik akan memudahkan pengembangan game *Noir* lebih lanjut.
+
+4. Memperbaiki game ketika di full-screen dan mempertajam gambar di Godot
+
+    Demi pengalaman bermain pengguna yang lebih baik, saya menyesuaikan perilaku game *Noir* ketika pengguna bermain dalam mode *fullscreen*. Selain itu, saya juga menyesuaikan filter gambar pada game *Noir* agar tidak pecah dan enak untuk dilihat oleh pemain (meningkatkan *look and feel* dari permainan).
+
+5. Menambahkan Kode CI/CD dengan GitHub Actions untuk membuild game *Noir* secara automatis pada platform Windows.
+
+    Agar proses build dapat dilakukan secara otomatis, saya mendefinisikan workflow untuk GitHub Actions yang sesuai.

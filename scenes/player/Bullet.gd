@@ -1,24 +1,29 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
-var bulletColor
-var custom_speed
+var bulletColor: String
+var speed: float = 300.0
+var animation_name: String
+
+@onready var animation_sprite = $AnimatedSprite2D
+
+
+func setup(animation_name_p: String, speed_p: int = speed):
+	animation_name = animation_name_p
+	bulletColor = animation_name
+	speed = speed_p
+
 
 func _ready():
-	pass
+	animation_sprite.play(animation_name)
 
-func setup(animation_name: String, speed: int = 0):
-	$AnimatedSprite2D.play(animation_name)
-	bulletColor = animation_name
-	custom_speed = speed
 
 func _physics_process(delta):
-	var collision = move_and_collide(velocity.normalized() * delta * (SPEED if custom_speed == 0 else custom_speed))
-	
+	var collision = move_and_collide(velocity.normalized() * delta * (speed))
+
 	if collision:
 		var colliderObj = collision.get_collider()
-		
-		if colliderObj.name == 'Barrier' or colliderObj.name == 'NextLevelBarrier':
+
+		if colliderObj.name == "Barrier" or colliderObj.name == "NextLevelBarrier":
 			queue_free()
-		elif colliderObj.name == 'TileMap':
+		elif colliderObj.name == "TileMap":
 			queue_free()

@@ -1,14 +1,10 @@
 extends Control
 
+@onready var death_count_label = $MarginContainer/VBoxContainer/DeathCount
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
-	$MarginContainer/VBoxContainer/DeathCount.text = 'Death Count: %d' % GameState.deathCount
-	pass
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+	death_count_label.text = "Death Count: %d" % GameState.deathCount
 
 
 func _on_quit_pressed():

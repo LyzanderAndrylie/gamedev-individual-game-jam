@@ -1,0 +1,88 @@
+[gd_scene load_steps=7 format=3 uid="uid://l7vojyy5fjg5"]
+
+[ext_resource type="Script" path="res://scenes/slides/slide2.gd" id="1_44cib"]
+[ext_resource type="Texture2D" uid="uid://bmp4mkuadx1a4" path="res://assets/Background/black.jpg" id="1_ifhgi"]
+[ext_resource type="Texture2D" uid="uid://bypx48sotrl4w" path="res://assets/Logo/UI.png" id="2_0lg5i"]
+[ext_resource type="FontFile" uid="uid://dau75jq4rtgwe" path="res://assets/Font/m6x11.ttf" id="2_ygy3o"]
+[ext_resource type="Texture2D" uid="uid://bfp85w61ytgeb" path="res://assets/Logo/FASILKOM.png" id="3_0o1j0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_at77f"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="Slide2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_44cib")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ifhgi")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_at77f")
+show_percentage = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="FASILKOM" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(280, 280)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("3_0o1j0")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="UI" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(280, 280)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("2_0lg5i")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Creator" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ygy3o")
+theme_override_font_sizes/font_size = 40
+text = "Fakultas Ilmu Komputer | Universitas Indonesia"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://c8ysaenfx8wwe"]
+[gd_scene load_steps=47 format=3 uid="uid://c8ysaenfx8wwe"]
 
 [ext_resource type="Script" path="res://scenes/levels/Level_1.gd" id="1_u4101"]
 [ext_resource type="Texture2D" uid="uid://bmp4mkuadx1a4" path="res://assets/Background/black.jpg" id="2_fie13"]
@@ -7079,6 +7079,9 @@ sources/5 = SubResource("TileSetAtlasSource_j22py")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dkaml"]
 size = Vector2(50, 730)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_adnl5"]
+size = Vector2(50, 730)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_425fe"]
 size = Vector2(699.005, 560)
 
@@ -7217,7 +7220,10 @@ size = Vector2(52, 127)
 [node name="Level_1" type="Node2D"]
 script = ExtResource("1_u4101")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="TextureRect" parent="CanvasLayer2"]
 offset_left = -1208.0
 offset_right = 3265.0
 offset_bottom = 1272.0
@@ -7246,20 +7252,21 @@ stream = ExtResource("17_6n0ny")
 autoplay = true
 max_distance = 20000.0
 
-[node name="Barrier" type="StaticBody2D" parent="."]
+[node name="Barrier" type="Node2D" parent="."]
+
+[node name="Barrier" type="StaticBody2D" parent="Barrier"]
 collision_mask = 6
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Barrier"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barrier/Barrier"]
 position = Vector2(-25, 365)
 shape = SubResource("RectangleShape2D_dkaml")
 
-[node name="Deadzone" parent="." instance=ExtResource("9_7gpua")]
-position = Vector2(1947, 752)
-scale = Vector2(200, 2)
+[node name="NextLevelBarrier" type="StaticBody2D" parent="Barrier"]
+collision_mask = 6
 
-[node name="Deadzone2" parent="." instance=ExtResource("9_7gpua")]
-position = Vector2(2040, 98)
-scale = Vector2(200, 2)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Barrier/NextLevelBarrier"]
+position = Vector2(2560, 408)
+shape = SubResource("RectangleShape2D_adnl5")
 
 [node name="Zone" type="Node2D" parent="."]
 
@@ -7427,114 +7434,34 @@ scale = Vector2(1.5, 0.2)
 position = Vector2(1776, 254)
 scale = Vector2(1.5, 0.2)
 
+[node name="Deadzone" parent="Zone" instance=ExtResource("9_7gpua")]
+position = Vector2(1947, 752)
+scale = Vector2(200, 2)
+
+[node name="Deadzone2" parent="Zone" instance=ExtResource("9_7gpua")]
+position = Vector2(2040, 98)
+scale = Vector2(200, 2)
+
+[node name="Challenge" type="Area2D" parent="Zone"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zone/Challenge"]
+position = Vector2(1806.5, 439)
+shape = SubResource("RectangleShape2D_425fe")
+
+[node name="Done" type="Area2D" parent="Zone"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zone/Done"]
+position = Vector2(2776, 312)
+shape = SubResource("CircleShape2D_maox0")
+
 [node name="Noir" parent="." instance=ExtResource("20_7o3iy")]
 position = Vector2(112, 392)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Noir"]
 remote_path = NodePath("../../Camera2D")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
-offset_right = 227.0
-offset_bottom = 162.0
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
-
-[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer"]
-z_index = -1
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/MarginContainer"]
-show_behind_parent = true
-layout_mode = 2
-theme_override_constants/separation = 12
-alignment = 1
-
-[node name="Health" type="RichTextLabel" parent="CanvasLayer/MarginContainer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 22)
-layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 12
-theme_override_fonts/normal_font = ExtResource("10_3y4iv")
-text = "Health"
-scroll_active = false
-
-[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/MarginContainer/MarginContainer/VBoxContainer"]
-self_modulate = Color(0, 0.776471, 0.541176, 1)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("10_3y4iv")
-
-[node name="Dash Status" type="CheckButton" parent="CanvasLayer/MarginContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 12
-theme_override_fonts/font = ExtResource("10_3y4iv")
-theme_override_font_sizes/font_size = 16
-text = "Dash Status"
-
-[node name="Skill Status" type="CheckButton" parent="CanvasLayer/MarginContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 12
-theme_override_fonts/font = ExtResource("10_3y4iv")
-theme_override_font_sizes/font_size = 16
-text = "Gravity Manipulation Status"
-
-[node name="Shoot Status" type="CheckButton" parent="CanvasLayer/MarginContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 12
-theme_override_fonts/font = ExtResource("10_3y4iv")
-theme_override_font_sizes/font_size = 16
-text = "Shoot Status"
-
-[node name="Death Count" type="RichTextLabel" parent="CanvasLayer/MarginContainer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 12
-theme_override_fonts/normal_font = ExtResource("10_3y4iv")
-text = "Death Count:"
-scroll_active = false
-
-[node name="PopupPanel" type="PopupPanel" parent="CanvasLayer"]
-position = Vector2i(762, 12)
-size = Vector2i(250, 100)
-
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/PopupPanel"]
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 246.0
-offset_bottom = 96.0
-theme_override_fonts/normal_font = ExtResource("10_3y4iv")
-theme_override_font_sizes/normal_font_size = 25
-text = "New Challenge:
-Kill the boss!"
-
-[node name="Challenge" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Challenge"]
-position = Vector2(1806.5, 439)
-shape = SubResource("RectangleShape2D_425fe")
-
-[node name="Done" type="Area2D" parent="."]
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Done"]
-position = Vector2(2776, 312)
-shape = SubResource("CircleShape2D_maox0")
 
 [node name="Enemy3" type="CharacterBody2D" parent="."]
 position = Vector2(2280, 224)
@@ -7639,14 +7566,102 @@ offset_bottom = 296.0
 theme_override_fonts/normal_font = ExtResource("10_3y4iv")
 text = "Leap of Faith"
 
-[connection signal="body_entered" from="Challenge" to="." method="_on_challenge_body_entered"]
-[connection signal="body_entered" from="Done" to="." method="_on_done_body_entered"]
-[connection signal="tree_exited" from="Enemy3" to="." method="_on_enemy_3_tree_exited"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+offset_right = 227.0
+offset_bottom = 162.0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer"]
+z_index = -1
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/MarginContainer"]
+show_behind_parent = true
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Health" type="RichTextLabel" parent="CanvasLayer/MarginContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/normal_font = ExtResource("10_3y4iv")
+text = "Health"
+scroll_active = false
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/MarginContainer/MarginContainer/VBoxContainer"]
+self_modulate = Color(0, 0.776471, 0.541176, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_3y4iv")
+
+[node name="Dash Status" type="CheckButton" parent="CanvasLayer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("10_3y4iv")
+theme_override_font_sizes/font_size = 16
+text = "Dash Status"
+
+[node name="Skill Status" type="CheckButton" parent="CanvasLayer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("10_3y4iv")
+theme_override_font_sizes/font_size = 16
+text = "Gravity Manipulation Status"
+
+[node name="Shoot Status" type="CheckButton" parent="CanvasLayer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("10_3y4iv")
+theme_override_font_sizes/font_size = 16
+text = "Shoot Status"
+
+[node name="Death Count" type="RichTextLabel" parent="CanvasLayer/MarginContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/normal_font = ExtResource("10_3y4iv")
+text = "Death Count:"
+scroll_active = false
+
+[node name="PopupPanel" type="PopupPanel" parent="CanvasLayer"]
+position = Vector2i(762, 12)
+size = Vector2i(250, 100)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/PopupPanel"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 246.0
+offset_bottom = 96.0
+theme_override_fonts/normal_font = ExtResource("10_3y4iv")
+theme_override_font_sizes/normal_font_size = 25
+text = "New Challenge:
+Kill the boss!"
+
+[connection signal="body_entered" from="Zone/Challenge" to="." method="_on_challenge_body_entered"]
+[connection signal="body_entered" from="Zone/Done" to="." method="_on_done_body_entered"]
+[connection signal="dead" from="Enemy3" to="." method="boss_dead"]
 [connection signal="body_entered" from="Enemy3/DetectionArea" to="Enemy3" method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="Enemy3/DetectionArea" to="Enemy3" method="_on_detection_area_body_exited"]
 [connection signal="timeout" from="Enemy3/ShootTimer" to="Enemy3" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Enemy3/Hitbox" to="Enemy3" method="_on_area_2d_body_entered"]
-[connection signal="tree_exited" from="Enemy4" to="." method="_on_enemy_4_tree_exited"]
+[connection signal="dead" from="Enemy4" to="." method="boss_dead"]
 [connection signal="body_entered" from="Enemy4/DetectionArea" to="Enemy4" method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="Enemy4/DetectionArea" to="Enemy4" method="_on_detection_area_body_exited"]
 [connection signal="timeout" from="Enemy4/ShootTimer" to="Enemy4" method="_on_timer_timeout"]
