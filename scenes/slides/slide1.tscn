@@ -1,0 +1,142 @@
+[gd_scene load_steps=13 format=3 uid="uid://cpnrtwo41poxe"]
+
+[ext_resource type="Script" path="res://scenes/slides/slide1.gd" id="1_r0r4i"]
+[ext_resource type="Texture2D" uid="uid://bmp4mkuadx1a4" path="res://assets/Background/black.jpg" id="1_urj6p"]
+[ext_resource type="FontFile" uid="uid://dau75jq4rtgwe" path="res://assets/Font/m6x11.ttf" id="2_28n2c"]
+[ext_resource type="Texture2D" uid="uid://cblqrgn6y23fg" path="res://assets/Pixel Protagonist/AnimationSheet_invert.png" id="3_gqrwm"]
+[ext_resource type="Texture2D" uid="uid://bq3ke53yovgu0" path="res://assets/Pixel Protagonist/AnimationSheet_rotate.png" id="4_r3yqe"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ptd3"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8v2x0"]
+atlas = ExtResource("3_gqrwm")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ewxv"]
+atlas = ExtResource("3_gqrwm")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wrfr2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8v2x0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ewxv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsy7m"]
+atlas = ExtResource("4_r3yqe")
+region = Rect2(168, 120, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fojff"]
+atlas = ExtResource("4_r3yqe")
+region = Rect2(144, 120, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bwr1p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gsy7m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fojff")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Slide1" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r0r4i")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_urj6p")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_8ptd3")
+show_percentage = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_28n2c")
+theme_override_font_sizes/font_size = 64
+text = "Noir"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BlackNoir" type="AnimatedSprite2D" parent="MarginContainer/VBoxContainer/Title"]
+position = Vector2(412, 20)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_wrfr2")
+autoplay = "default"
+
+[node name="WhiteNoir" type="AnimatedSprite2D" parent="MarginContainer/VBoxContainer/Title"]
+position = Vector2(570, 31)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_bwr1p")
+autoplay = "default"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Title"]
+layout_mode = 2
+offset_top = 124.0
+offset_right = 992.0
+offset_bottom = 124.0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Title"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Creator" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_28n2c")
+theme_override_font_sizes/font_size = 40
+text = " By Lyzander Marciano Andrylie"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

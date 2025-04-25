@@ -1,8 +1,9 @@
-[gd_scene load_steps=29 format=3 uid="uid://g63u1awxudqx"]
+[gd_scene load_steps=33 format=3 uid="uid://g63u1awxudqx"]
 
 [ext_resource type="Script" path="res://scenes/player/Noir.gd" id="1_1vwh7"]
 [ext_resource type="Texture2D" uid="uid://cblqrgn6y23fg" path="res://assets/Pixel Protagonist/AnimationSheet_invert.png" id="1_qt84a"]
 [ext_resource type="Texture2D" uid="uid://bq3ke53yovgu0" path="res://assets/Pixel Protagonist/AnimationSheet_rotate.png" id="3_p1kto"]
+[ext_resource type="AudioStream" uid="uid://bdbieg1038yjw" path="res://assets/Audio/8-bit-jump-001-171817.mp3" id="4_u621f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_afkck"]
 atlas = ExtResource("1_qt84a")
@@ -197,6 +198,22 @@ size = Vector2(9.5, 17)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nwkeq"]
 size = Vector2(9.5, 17)
 
+[sub_resource type="Curve" id="Curve_81q3c"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_28hll"]
+curve = SubResource("Curve_81q3c")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5wt7h"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(5, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, 0, 0)
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_28hll")
+
 [node name="Noir" type="CharacterBody2D"]
 scale = Vector2(2, 2)
 collision_layer = 2
@@ -204,19 +221,16 @@ script = ExtResource("1_1vwh7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ydngf")
+autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.25, 3.5)
 shape = SubResource("RectangleShape2D_ocnuq")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Shoot" type="Node2D" parent="."]
 
-[node name="Marker2D" type="Marker2D" parent="Node2D"]
+[node name="Marker2D" type="Marker2D" parent="Shoot"]
 position = Vector2(11, 2)
-
-[node name="ChangeGravityTimer" type="Timer" parent="."]
-wait_time = 0.8
-one_shot = true
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0
@@ -226,9 +240,32 @@ collision_mask = 4
 position = Vector2(0.25, 3.5)
 shape = SubResource("RectangleShape2D_nwkeq")
 
-[node name="ShootTimer" type="Timer" parent="."]
+[node name="Timer" type="Node2D" parent="."]
+
+[node name="ChangeGravityTimer" type="Timer" parent="Timer"]
+wait_time = 0.8
 one_shot = true
 
-[connection signal="timeout" from="ChangeGravityTimer" to="." method="_on_change_gravity_timer_timeout"]
+[node name="ShootTimer" type="Timer" parent="Timer"]
+one_shot = true
+
+[node name="DashActiveTimer" type="Timer" parent="Timer"]
+wait_time = 0.1
+one_shot = true
+
+[node name="DashCooldownTimer" type="Timer" parent="Timer"]
+wait_time = 2.0
+one_shot = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, 12)
+emitting = false
+amount = 40
+process_material = SubResource("ParticleProcessMaterial_5wt7h")
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_u621f")
+
 [connection signal="body_entered" from="Hitbox" to="." method="_on_area_2d_body_entered"]
-[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
+[connection signal="timeout" from="Timer/ChangeGravityTimer" to="." method="_on_change_gravity_timer_timeout"]
+[connection signal="timeout" from="Timer/ShootTimer" to="." method="_on_shoot_timer_timeout"]
