@@ -2,82 +2,82 @@
 
 > Godot Version: 4.2.1
 
-## Deskripsi Game
+## Game Description
 
-![Menu Upside Down Noir](./image/upside_down_noir_menu.png)
+![Upside Down Noir Menu](./image/upside_down_noir_menu.png)
 
-**Upside Down Noir** adalah pengalaman bermain game yang imersif dan unik di mana pemain berperan sebagai Noir, karakter serbaguna yang mampu melawan gravitasi dan memanfaatkan kekuatan api. Dalam game ini, Noir memiliki kemampuan untuk mengubah gravitasi sesuka hati, bertransisi antara bentuk hitam dengan gravitasi normal dan bentuk putih dengan gravitasi terbalik. Transformasi warna ini tidak hanya memengaruhi gravitasi tetapi juga memengaruhi interaksi Noir dengan lingkungan.
+**Upside Down Noir** is an immersive and unique gaming experience where players take on the role of Noir, a versatile character capable of defying gravity and harnessing the power of fire. In this game, Noir has the ability to manipulate gravity at will, transitioning between a black form with normal gravity and a white form with inverted gravity. These transformations not only affect gravity but also influence Noir's interactions with the environment.
 
-Tujuan dari **Upside Down Noir** adalah untuk menavigasi melalui level-level menantang yang dipenuhi dengan platform hitam dan putih. Saat Noir dalam bentuk hitam, ia tidak dapat menyentuh platform putih, dan saat dalam bentuk putih, ia harus menghindari platform hitam. Mekanik ini menambahkan lapisan strategi dan pemecahan teka-teki yang menarik karena pemain harus mengatur waktu dengan cermat perubahan gravitasi untuk maju melalui level.
+The goal of **Upside Down Noir** is to navigate through challenging levels filled with black and white platforms. When Noir is in black form, he cannot touch white platforms, and when in white form, he must avoid black platforms. This mechanic adds a layer of strategy and puzzle-solving as players must carefully time gravity changes to progress through the levels.
 
-Tantangan utama menanti di akhir setiap level, di mana Noir berhadapan dengan bos penyihir yang kuat. Warna penyihir, baik hitam atau putih, menentukan bentuk Noir mana yang dapat menimbulkan kerusakan. Penyihir putih hanya bisa dikalahkan oleh Noir hitam, sedangkan penyihir hitam hanya bisa dikalahkan oleh Noir putih. Pemain harus menguasai seni manipulasi gravitasi dan memanfaatkan kemampuan menembakkan api dari Noir untuk mengatasi musuh-musuh yang tangguh ini dan muncul sebagai pemenang.
+The main challenge awaits at the end of each level, where Noir faces off against a powerful sorcerer boss. The sorcerer's color, either black or white, determines which form of Noir can deal damage. A white sorcerer can only be defeated by black Noir, while a black sorcerer can only be defeated by white Noir. Players must master the art of gravity manipulation and utilize Noir's fire-shooting ability to overcome these formidable foes and emerge victorious.
 
-**Upside Down Noir** menawarkan perpaduan yang menawan antara platforming, pemecahan teka-teki, dan pertarungan melawan bos, menjadikannya petualangan yang menggembirakan bagi para gamer yang mencari pengalaman baru dan inovatif.
+**Upside Down Noir** offers a captivating blend of platforming, puzzle-solving, and boss battles, making it an exhilarating adventure for gamers seeking a fresh and innovative experience.
 
-### Konsep Game
+### Game Concept
 
-Konsep game **Upside Down Noir** memadukan tiga *diversifier* unik, sebagai berikut.
+The concept of **Upside Down Noir** integrates three unique *diversifiers* as follows:
 
-1. Yeet: Noir dapat memanfaatkan kekuatan api untuk menembak bos penyihir yang menghalangi Noir dalam perjalanannya menyelesaikan berbagai level.
-2. Orange is the New Black: Noir dapat bertransformasi ke dalam bentuk hitam dan putih dengan masing-masing bentuk memiliki kemampuan yang berbeda.
-   - Noir hitam bergerak dalam gravitasi normal (arah gaya gravitasi ke bawah), dapat menyetuh platform hitam saja, dan dapat menyerang penyihir putih.
-   - Di sisi lain, Noir putih bergerak dalam gravitasi terbalik (arah gaya gravitasi ke atas), dapat menyetuh platform putih saja, dan dapat menyerang penyihir hitam.
-3. Tsunomaki Janken: Noir hitam hanya dapat menyetuh platform hitam dan mengalahkan penyihir putih. Noir Putih hanya dapat menyetuh platform putih dan mengalahkan penyihir hitam. Dengan demikian, Noir harus memanfaatkan kedua bentuk tersebut untuk mengatasi kelemahan masing-masing bentuk dan memanfaatkan kelebihan masing-masing bentuk. Kelemahan dan kelebihan dari masing-masing bentuk Noir berbanding terbalik.
+1. Yeet: Noir can harness the power of fire to shoot at sorcerer bosses blocking his path through various levels.
+2. Orange is the New Black: Noir can transform into black and white forms, each with distinct abilities.
+    - Black Noir moves with normal gravity (gravity pulls downward), can only touch black platforms, and can attack white sorcerers.
+    - Conversely, White Noir moves with inverted gravity (gravity pulls upward), can only touch white platforms, and can attack black sorcerers.
+3. Tsunomaki Janken: Black Noir can only touch black platforms and defeat white sorcerers. White Noir can only touch white platforms and defeat black sorcerers. Thus, Noir must leverage both forms to overcome their respective weaknesses and utilize their strengths. The strengths and weaknesses of each form are inversely related.
 
-### Panduan Cara Bermain
+### How to Play
 
-Cara bermain game ini sangat mudah. Yuk, kita simak!
+Playing this game is very simple. Let's take a look!
 
-1. Ketika pemain memulai permainan, pemain akan berada dalam halaman menu.
-2. Pemain harus menekan tombol `Start` untuk memulai permainan.
+1. When the player starts the game, they will be on the menu screen.
+2. The player must press the `Start` button to begin the game.
 
-    ![Menu Upside Down Noir](./image/upside_down_noir_menu.png)
+     ![Upside Down Noir Menu](./image/upside_down_noir_menu.png)
 
-3. Jika pemain baru pertama kali bermain, pemain akan masuk ke level tutorial yang menjelaskan mekanisme permainan.
+3. If the player is playing for the first time, they will enter a tutorial level explaining the game mechanics.
 
-    ![Level Tutorial Upside Down Noir](./image/level_tutorial.png)
+     ![Upside Down Noir Tutorial Level](./image/level_tutorial.png)
 
-    - Tekan tombol `A` untuk begerak ke kiri
-    - Tekan tombol `D` untuk begerak ke kanan
-    - Tekan tombol `A` atau `D` dua kali untuk *dash*
-    - Tekan tombol `W` atau `Space` untuk melompat. Tekan tombol tersebut dua kali untuk double jump.
-    - Tekan tombol `Q` untuk mengubah bentuk Noir dan memanipulasi gravitasi.
-    - Tekan `Left Click` pada mouse dan arahkan pointer mouse untuk menembak.
+     - Press the `A` key to move left.
+     - Press the `D` key to move right.
+     - Double-tap `A` or `D` to dash.
+     - Press the `W` key or `Space` to jump. Double-tap to double jump.
+     - Press the `Q` key to switch Noir's form and manipulate gravity.
+     - Press the `Left Click` on the mouse and aim the pointer to shoot.
 
-4. Pemain akan bergerak ke kanan peta untuk menyelesaikan level dengan menghadapai berbagai tantangan.
+4. The player will move to the right side of the map to complete the level while facing various challenges.
 
-    ![Progress pada Level Tutorial](./image/level_tutorial_progress.png)
+     ![Progress in Tutorial Level](./image/level_tutorial_progress.png)
 
-5. Pemain akan bertemu bos di akhir level dan bertarung sekuat tenaga untuk mengalahkan bos tersebut.
+5. The player will encounter a boss at the end of the level and must fight with all their might to defeat it.
 
-    ![Boss pada Level Tutorial](./image/level_tutorial_boss.png)
+     ![Boss in Tutorial Level](./image/level_tutorial_boss.png)
 
-    Jika pemain dikalahkan bos penyihir, pemain dapat mengulang level tersebut.
+     If the player is defeated by the sorcerer boss, they can retry the level.
 
-    ![Game Over pada Level Tutorial](./image/level_tutorial_game_over.png)
+     ![Game Over in Tutorial Level](./image/level_tutorial_game_over.png)
 
-6. Setelah Pemain mengalahkan Boss, pemain harus mengambil *key* yang berada di ujung peta untuk lanjut ke level berikutnya.
+6. After defeating the boss, the player must collect the *key* at the end of the map to proceed to the next level.
 
-    ![Akhir dari Level Tutorial](./image/level_tutorial_end.png)
+     ![End of Tutorial Level](./image/level_tutorial_end.png)
 
-7. Selamat Anda berhasil menyelesaikan tutorial (atau mengulang level kembali bila salah memilih kunci).
+7. Congratulations! You have completed the tutorial (or replayed the level if you chose the wrong key).
 
-> Tips: Ingat kemampuan dari masing-masing bentuk Noir
+> Tips: Remember the abilities of each Noir form.
 
-### Screenshot Game Level 1
+### Game Level 1 Screenshots
 
-![Level 1 Awal](./image/level1.png)
+![Level 1 Start](./image/level1.png)
 
 ![Level 1 Progress](./image/level1_progress.png)
 
-![Level 1 Akhir](./image/level1_end.png)
+![Level 1 End](./image/level1_end.png)
 
-### Tautan Kode Sumber
+### Source Code Links
 
-- [Github](https://github.com/LyzanderAndrylie/gamedev-individual-game-jam)
-- [Executeable File](https://github.com/LyzanderAndrylie/gamedev-individual-game-jam/tree/main/builds/)
+- [GitHub](https://github.com/LyzanderAndrylie/gamedev-individual-game-jam)
+- [Executable File](https://github.com/LyzanderAndrylie/gamedev-individual-game-jam/tree/main/builds/)
 
-## Sumber asset
+## Asset Sources
 
 1. [Pixel Protagonist](https://penzilla.itch.io/protagonist-character)
 2. [Slime](https://craftpix.net/freebies/free-slime-sprite-sheets-pixel-art/)
@@ -98,37 +98,30 @@ Cara bermain game ini sangat mudah. Yuk, kita simak!
 
 ### Cheat
 
-Pemain dapat mengaktifkan cheat dengan menekan kombinasi tombol `Ctrl + Shift + *`.
+Players can activate cheats by pressing the key combination `Ctrl + Shift + *`.
 
-Ketika pemain mengaktifkan cheat, pemain dapat terbang dengan leluasa pada level permainan. Selain itu, pemain akan mendapatkan *health* yang tidak terbatas.
-
+When cheats are activated, players can freely fly through the game levels. Additionally, players will have unlimited health.
 
 https://github.com/LyzanderAndrylie/gamedev-individual-game-jam/assets/107832263/6314ee75-17b3-4f92-9fad-b8388f76b293
 
-
-
 ### Polishing
 
-1. Menambahkan particle trail ketika Noir sedang berjalan
+1. Added particle trails when Noir is walking.
 
-    Hal ini meningkatkan aestetik permainan karena sesuai dengan tema dari game *Noir* sendiri yang bertemakan hitam putih (1 bit). Selain itu, ketika pemain bergerak dan mengubah gravitasi, pemain dapat melihat pola indah dari pergerakan yang dilakukan oleh Noir. Berikut adalah contoh screenshot dari penambahan particle trail tersebut.
+     This enhances the game's aesthetics, aligning with the black-and-white (1-bit) theme of *Noir*. Additionally, when players move and manipulate gravity, they can observe beautiful patterns created by Noir's movements. Below is a screenshot example of the added particle trails.
 
+2. Added audio when Noir jumps.
 
-https://github.com/LyzanderAndrylie/gamedev-individual-game-jam/assets/107832263/cfd9beb4-b32f-4d85-a24c-d7c7dfd5f263
+     Proper audio enhances the game's mood and player experience. Therefore, I added audio effects for Noir's jumps.
 
+3. Improved source code.
 
-3. Menambahkan audio ketika Noir sedang melompat
+     This polishing step involved refining the source code to prevent bugs that could affect the player's experience. Additionally, well-structured source code facilitates further development of the *Noir* game.
 
-    Penambahan audio yang tepat dapat meningkatkan mood permainan dan pengalaman bermain dari pemain. Oleh karena itu, saya menambahkan audio ketika Noir sedang melompat.
+4. Enhanced full-screen gameplay and sharpened visuals in Godot.
 
-4. Memperbaiki kode sumber
+     To improve the player's experience, I adjusted the behavior of the *Noir* game when played in full-screen mode. Furthermore, I optimized the game's image filters to prevent pixelation, enhancing the game's overall look and feel.
 
-    Polishing ini dilakukan dengan memperbaiki kode sumber sedemikian hingga mencegah terjadinya bug yang dapat mempengaruhi pengalaman bermain pengguna. Selain itu, kode sumber yang baik akan memudahkan pengembangan game *Noir* lebih lanjut.
+5. Added CI/CD workflow with GitHub Actions to automatically build the *Noir* game on Windows platforms.
 
-5. Memperbaiki game ketika di full-screen dan mempertajam gambar di Godot
-
-    Demi pengalaman bermain pengguna yang lebih baik, saya menyesuaikan perilaku game *Noir* ketika pengguna bermain dalam mode *fullscreen*. Selain itu, saya juga menyesuaikan filter gambar pada game *Noir* agar tidak pecah dan enak untuk dilihat oleh pemain (meningkatkan *look and feel* dari permainan).
-
-6. Menambahkan Kode CI/CD dengan GitHub Actions untuk membuild game *Noir* secara automatis pada platform Windows.
-
-    Agar proses build dapat dilakukan secara otomatis, saya mendefinisikan workflow untuk GitHub Actions yang sesuai.
+     To automate the build process, I defined a workflow for GitHub Actions tailored to this purpose.
